@@ -22,7 +22,7 @@ public class KafkaConfig {
     @Value("${kafka.client-id}")
     private String clientId;
 
-    //Config para um consumidor em específico: kafka-veiculo-api
+
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory(){
         Map<String, Object> props = new HashMap<>();
