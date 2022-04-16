@@ -23,14 +23,16 @@ public class UserService {
     private final ProducerService producerService;
     private final static LogDTO logInfo = new LogDTO();
 
-    public List<UserFormedDTO> readAllUsers() {
+    public List<UserFormedDTO> readAllUsers() throws JsonProcessingException {
+        producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Encontrar usuários cadastrados."
+                , TypeLog.INFO));
         return convertList(userRepository.findAll());
     }
 
     public UserFormedDTO findUserById(String objectId) throws ObjectNotFoundException, JsonProcessingException {
         producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Encontrar por id."
                 , TypeLog.INFO));
-        //TODO: Metodo envio kafka (topico-log)  sendMessage (msg)
+        //TODO: Metodo envio kafka (topico-log)  sendMessage (msg) #feito
         //TODO:Log api --Listar, salvar
         UserEntity u = userRepository.findById(objectId).orElseThrow(() ->
                 new ObjectNotFoundException("User not found!"));
@@ -38,8 +40,9 @@ public class UserService {
         return objectMapper.convertValue(u, UserFormedDTO.class);
     }
 
-    public UserFormedDTO saveUser(UserCreateDTO userCreateDTO) {
-        log.info("Chamada de método service:: Salvar usuários.");
+    public UserFormedDTO saveUser(UserCreateDTO userCreateDTO) throws JsonProcessingException {
+        producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Salvar usuários."
+                , TypeLog.INFO));
         UserEntity u = objectMapper.convertValue(userCreateDTO, UserEntity.class);
         log.info("Objeto DTO convertido para tipo Usuario.");
         u.setActive(true);
@@ -48,8 +51,9 @@ public class UserService {
         return objectMapper.convertValue(u2, UserFormedDTO.class);
     }
 
-    public UserFormedDTO updateUser(UserUpdateDTO userUpdateDTO, String idUser) throws ObjectNotFoundException {
-        log.info("Chamada de método service:: Atualizar usuários.");
+    public UserFormedDTO updateUser(UserUpdateDTO userUpdateDTO, String idUser) throws ObjectNotFoundException, JsonProcessingException {
+        producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Atualizar usuários."
+                , TypeLog.INFO));
         UserEntity oldUser = userRepository.findById(idUser)
                 .orElseThrow(() -> new ObjectNotFoundException("User not found!"));
         UserEntity newUser = objectMapper.convertValue(userUpdateDTO, UserEntity.class);
@@ -62,8 +66,9 @@ public class UserService {
         return objectMapper.convertValue(oldUser, UserFormedDTO.class);
     }
 
-    public void deleteUser(String idUser) throws ObjectNotFoundException {
-        log.info("Chamada de método service:: Deletar usuários.");
+    public void deleteUser(String idUser) throws ObjectNotFoundException, JsonProcessingException {
+        producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Deletar usuários."
+                , TypeLog.INFO));
         UserEntity userEntity = userRepository.findById(idUser)
                 .orElseThrow(() -> new ObjectNotFoundException("User not found!"));
         userEntity.setActive(false);

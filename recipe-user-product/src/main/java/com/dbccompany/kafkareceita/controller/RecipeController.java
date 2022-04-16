@@ -27,7 +27,7 @@ public class RecipeController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema."),})
     @GetMapping("/readAllRecipes")
-    public List<RecipeFormedDTO> readAllRecipes() {
+    public List<RecipeFormedDTO> readAllRecipes() throws JsonProcessingException {
         return recipeService.readAllRecipes();
     }
 
@@ -36,7 +36,7 @@ public class RecipeController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @GetMapping("/{idRecipe}")
-    public RecipeFormedDTO findRecipeById(@PathVariable("idRecipe") String idRecipe) throws ObjectNotFoundException {
+    public RecipeFormedDTO findRecipeById(@PathVariable("idRecipe") String idRecipe) throws ObjectNotFoundException, JsonProcessingException {
         return recipeService.findRecipeById(idRecipe);
     }
 
@@ -57,7 +57,7 @@ public class RecipeController {
     @PutMapping("/updateRecipe/{idRecipe}")
     @Validated
     public RecipeFormedDTO updateRecipe(@PathVariable("idRecipe") String idRecipe,
-                                        @Valid @RequestBody RecipeCreateDTO updateRecipe) throws ObjectNotFoundException, UserNotActiveException {
+                                        @Valid @RequestBody RecipeCreateDTO updateRecipe) throws ObjectNotFoundException, UserNotActiveException, JsonProcessingException {
         return recipeService.updateRecipe(updateRecipe, idRecipe);
     }
 
@@ -66,7 +66,7 @@ public class RecipeController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @DeleteMapping("/deleteRecipe/{idRecipe}")
-    public void deleteRecipe(@PathVariable("idRecipe") String idRecipe) throws ObjectNotFoundException {
+    public void deleteRecipe(@PathVariable("idRecipe") String idRecipe) throws ObjectNotFoundException, JsonProcessingException {
         recipeService.deleteRecipe(idRecipe);
     }
 
