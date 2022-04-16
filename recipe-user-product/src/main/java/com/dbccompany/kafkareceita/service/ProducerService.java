@@ -1,6 +1,7 @@
 package com.dbccompany.kafkareceita.service;
 
 import com.dbccompany.kafkareceita.dataTransfer.BuyDTO;
+import com.dbccompany.kafkareceita.dataTransfer.InfoBuyDTO;
 import com.dbccompany.kafkareceita.dataTransfer.LogDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,7 +26,7 @@ public class ProducerService {
     private final ObjectMapper objectMapper;
     private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(BuyDTO buyDTO) throws JsonProcessingException {
+    public void sendMessage(InfoBuyDTO buyDTO) throws JsonProcessingException {
         String message = objectMapper.writeValueAsString(buyDTO);
         send(message, "recipe-buy");
     }

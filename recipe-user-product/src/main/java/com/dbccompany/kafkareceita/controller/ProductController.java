@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,13 +28,13 @@ public class ProductController {
         return productService.findByProductNameContainingIgnoreCase(productName);
     }
 
-    @ApiOperation(value = "Ordena os produtos pelo numero de clicks.")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Ordenação de produtos retornado com sucesso do banco."),
+    @ApiOperation(value = "Retorna a lista de todos os produtos do site.")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Produtos listados com sucesso do banco."),
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
-    @GetMapping("/orderForNumberClicks")
-    public Page<ProductFormedDTO> orderByNumberClicks(Integer paginaSolicitada, Integer tamanhoPagina) {
-        return productService.orderByNumberClicks(paginaSolicitada, tamanhoPagina);
+    @GetMapping("/findAllProducts")
+    public List<ProductFormedDTO> findAllProducts() {
+        return productService.findAllProducts();
     }
 
     @PostMapping("/buy")

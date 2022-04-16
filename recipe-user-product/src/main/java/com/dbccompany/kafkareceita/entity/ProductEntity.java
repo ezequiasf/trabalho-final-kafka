@@ -19,5 +19,4 @@ public class ProductEntity {
     private Double price;
     private String description;
     private Integer stock;
-    private Integer number_clicks;
 }

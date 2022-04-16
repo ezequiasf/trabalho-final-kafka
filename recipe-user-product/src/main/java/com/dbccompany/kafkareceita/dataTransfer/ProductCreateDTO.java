@@ -26,8 +26,5 @@ public class ProductCreateDTO {
 
     @NotNull(message = "O estoque deve ser informado.")
     private Integer stock;
-
-
-    private Integer number_clicks;
 }
 

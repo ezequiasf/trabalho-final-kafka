@@ -12,8 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BuyDTO {
-    private String userEmail;
-    private String fullName;
+    private String userId;
     private String productId;
     private Integer qntItens;
     private String cardNumber;
