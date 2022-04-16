@@ -1,11 +1,9 @@
-package com.dbccompany.kafkareceita.dataTransfer;
+package com.dbccompany.processamentocartao.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
 
 @Setter
 @Getter

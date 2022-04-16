@@ -3,12 +3,13 @@ package com.dbccompany.processamentocartao.enumTemplates;
 import lombok.Getter;
 
 @Getter
-public enum SituacoesUsuario implements TemplateSituations {
-    COMPRA("compra-produto.ftl");
+public enum SituacoesCompra implements TemplateSituations {
+    SUCESSO("compra-sucesso.ftl"),
+    FALHA("compra-falha.ftl");
 
     private final String templateName;
 
-    SituacoesUsuario(String templateName) {
+    SituacoesCompra(String templateName) {
         this.templateName = templateName;
     }
 }

@@ -37,7 +37,6 @@ public class EmailUtil {
         carteiro.send(msg);
     }
 
-
     public void enviarEmailSimples(String remetente, String destinatario,
                                    File conteudoMensagem) {
         try {
@@ -103,7 +102,6 @@ public class EmailUtil {
         }
         return mimeMessageHelper;
     }
-
 
     private String construirTemplate(TemplateObject templateObj, TemplateSituations situacao) throws IOException, TemplateException {
         configuracaoTemplate.setDirectoryForTemplateLoading(new File("src/main/resources/templates"));
