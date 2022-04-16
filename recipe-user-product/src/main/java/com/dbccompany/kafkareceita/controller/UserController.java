@@ -6,6 +6,7 @@ import com.dbccompany.kafkareceita.dataTransfer.UserFormedDTO;
 import com.dbccompany.kafkareceita.dataTransfer.UserUpdateDTO;
 import com.dbccompany.kafkareceita.exceptions.ObjectNotFoundException;
 import com.dbccompany.kafkareceita.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -36,7 +37,7 @@ public class UserController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @GetMapping("/{idUser}")
-    public UserFormedDTO findUserById(@PathVariable("idUser") String objectId) throws ObjectNotFoundException {
+    public UserFormedDTO findUserById(@PathVariable("idUser") String objectId) throws ObjectNotFoundException, JsonProcessingException {
         return serviceUsuario.findUserById(objectId);
     }
 

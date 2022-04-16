@@ -22,7 +22,7 @@ public class BuyVerification {
     private final ObjectMapper objectMapper;
     private final EmailUtil emailUtil;
 
-    private static boolean checkValidation(String cardNumber) {
+    private boolean checkValidation(String cardNumber) {
         String numbers = cardNumber.replace(" ", "");
         if (!(numbers.length() >= 13 && numbers.length() <= 16)) {
             return false;
@@ -32,8 +32,7 @@ public class BuyVerification {
                 .collect(Collectors.toList());
         for (int i = 0; i < numbersInt.size(); i++) {
             if (i % 2 == 0) {
-                int numberPar = numbersInt.get(i);
-                int validNumber = numberPar * 2;
+                int validNumber = numbersInt.get(i) * 2;
                 int resultNumber;
                 if (validNumber > 9) {
                     resultNumber = validNumber % 10 + 1;

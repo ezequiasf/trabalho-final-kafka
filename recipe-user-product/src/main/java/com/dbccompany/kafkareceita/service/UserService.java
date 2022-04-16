@@ -1,12 +1,11 @@
 package com.dbccompany.kafkareceita.service;
 
 
-import com.dbccompany.kafkareceita.dataTransfer.UserCreateDTO;
-import com.dbccompany.kafkareceita.dataTransfer.UserFormedDTO;
-import com.dbccompany.kafkareceita.dataTransfer.UserUpdateDTO;
+import com.dbccompany.kafkareceita.dataTransfer.*;
 import com.dbccompany.kafkareceita.entity.UserEntity;
 import com.dbccompany.kafkareceita.exceptions.ObjectNotFoundException;
 import com.dbccompany.kafkareceita.repository.UserRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,13 +20,18 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
+    private final ProducerService producerService;
+    private final static LogDTO logInfo = new LogDTO();
 
     public List<UserFormedDTO> readAllUsers() {
         return convertList(userRepository.findAll());
     }
 
-    public UserFormedDTO findUserById(String objectId) throws ObjectNotFoundException {
-        log.info("Chamada de método service:: Encontrar por id.");
+    public UserFormedDTO findUserById(String objectId) throws ObjectNotFoundException, JsonProcessingException {
+        producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Encontrar por id."
+                , TypeLog.INFO));
+        //TODO: Metodo envio kafka (topico-log)  sendMessage (msg)
+        //TODO:Log api --Listar, salvar
         UserEntity u = userRepository.findById(objectId).orElseThrow(() ->
                 new ObjectNotFoundException("User not found!"));
         log.info("Feita verificação do ID.");

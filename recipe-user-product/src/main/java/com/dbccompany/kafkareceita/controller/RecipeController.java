@@ -5,6 +5,7 @@ import com.dbccompany.kafkareceita.dataTransfer.RecipeFormedDTO;
 import com.dbccompany.kafkareceita.exceptions.ObjectNotFoundException;
 import com.dbccompany.kafkareceita.exceptions.UserNotActiveException;
 import com.dbccompany.kafkareceita.service.RecipeService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -45,7 +46,7 @@ public class RecipeController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @PostMapping("/saveRecipe/{idUser}")
     @Validated
-    public RecipeFormedDTO saveRecipe(@Valid @RequestBody RecipeCreateDTO recipeCreateDTO, @PathVariable("idUser") String idUser) throws ObjectNotFoundException, UserNotActiveException {
+    public RecipeFormedDTO saveRecipe(@Valid @RequestBody RecipeCreateDTO recipeCreateDTO, @PathVariable("idUser") String idUser) throws ObjectNotFoundException, UserNotActiveException, JsonProcessingException {
         return recipeService.saveRecipe(recipeCreateDTO, idUser);
     }
 

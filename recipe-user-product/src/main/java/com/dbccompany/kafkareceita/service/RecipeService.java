@@ -9,6 +9,7 @@ import com.dbccompany.kafkareceita.entity.UserEntity;
 import com.dbccompany.kafkareceita.exceptions.ObjectNotFoundException;
 import com.dbccompany.kafkareceita.exceptions.UserNotActiveException;
 import com.dbccompany.kafkareceita.repository.RecipeRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +36,7 @@ public class RecipeService {
         return objectMapper.convertValue(r, RecipeFormedDTO.class);
     }
 
-    public RecipeFormedDTO saveRecipe(RecipeCreateDTO recipeCreateDTO, String idUser) throws ObjectNotFoundException, UserNotActiveException {
+    public RecipeFormedDTO saveRecipe(RecipeCreateDTO recipeCreateDTO, String idUser) throws ObjectNotFoundException, UserNotActiveException, JsonProcessingException {
         log.info("Chamada de método service:: Salvar receitas.");
         UserFormedDTO userFormedDTO = userService.findUserById(idUser);
         UserEntity userEntity = objectMapper.convertValue(userFormedDTO, UserEntity.class);
