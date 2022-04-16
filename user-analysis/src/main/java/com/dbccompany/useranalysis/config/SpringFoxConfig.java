@@ -1,4 +1,4 @@
-package com.dbccompany.logapi.config;
+package com.dbccompany.useranalysis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +18,7 @@ public class SpringFoxConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.dbccompany.logapi"))
+                .apis(RequestHandlerSelectors.basePackage("com.dbccompany.useranalysis"))
                 .paths(PathSelectors.any())
                 .build()
                 .useDefaultResponseMessages(false)

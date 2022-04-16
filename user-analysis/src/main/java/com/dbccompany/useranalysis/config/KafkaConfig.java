@@ -22,9 +22,8 @@ public class KafkaConfig {
     @Value("${kafka.client-id}")
     private String clientId;
 
-
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory(){
+    public ConcurrentKafkaListenerContainerFactory<String, String> listenerContainerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
