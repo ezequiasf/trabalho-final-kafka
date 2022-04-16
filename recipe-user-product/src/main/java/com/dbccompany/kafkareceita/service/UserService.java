@@ -9,7 +9,6 @@ import com.dbccompany.kafkareceita.exceptions.ObjectNotFoundException;
 import com.dbccompany.kafkareceita.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@Log
 public class UserService {
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;

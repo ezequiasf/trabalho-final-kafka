@@ -24,6 +24,4 @@ public class RecipeEntity {
     private Double price;
     private Double calories;
     private List<String> ingredients;
-
-
 }

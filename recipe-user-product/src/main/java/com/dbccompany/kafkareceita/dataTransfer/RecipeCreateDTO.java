@@ -13,7 +13,6 @@ import java.util.List;
 @Getter
 @Setter
 public class RecipeCreateDTO {
-
     private String recipeName;
 
     @NotBlank(message = "O modo de preparo deve ser informado.")

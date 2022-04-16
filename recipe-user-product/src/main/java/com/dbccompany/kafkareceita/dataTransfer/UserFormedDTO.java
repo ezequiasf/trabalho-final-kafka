@@ -11,5 +11,4 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UserFormedDTO extends UserUpdateDTO {
     private String objectId;
-
 }

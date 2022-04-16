@@ -35,7 +35,7 @@ public class RecipeController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @GetMapping("/{idRecipe}")
-    public RecipeFormedDTO findRecipeById(@RequestParam("idRecipe") String idRecipe) throws ObjectNotFoundException {
+    public RecipeFormedDTO findRecipeById(@PathVariable("idRecipe") String idRecipe) throws ObjectNotFoundException {
         return recipeService.findRecipeById(idRecipe);
     }
 

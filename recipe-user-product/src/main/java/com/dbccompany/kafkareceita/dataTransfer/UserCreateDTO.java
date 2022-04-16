@@ -25,5 +25,4 @@ public class UserCreateDTO {
     @Email
     @NotBlank(message = "O email deve ser informado.")
     private String email;
-
 }

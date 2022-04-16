@@ -36,7 +36,7 @@ public class UserController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @GetMapping("/{idUser}")
-    public UserFormedDTO findUserById(@RequestParam("idUser") String objectId) throws ObjectNotFoundException {
+    public UserFormedDTO findUserById(@PathVariable("idUser") String objectId) throws ObjectNotFoundException {
         return serviceUsuario.findUserById(objectId);
     }
 
@@ -56,7 +56,7 @@ public class UserController {
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @PutMapping("/updateUser/{idUser}")
     @Validated
-    public UserFormedDTO updateUser(@RequestParam("idUser") String idUser,
+    public UserFormedDTO updateUser(@PathVariable("idUser") String idUser,
                                     @Valid @RequestBody UserUpdateDTO userUpdateDTO) throws ObjectNotFoundException {
         return serviceUsuario.updateUser(userUpdateDTO, idUser);
     }
@@ -66,7 +66,7 @@ public class UserController {
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção"),})
     @DeleteMapping("/deleteUser/{idUser}")
-    public void deleteUser(@RequestParam("idUser") String idUser) throws ObjectNotFoundException {
+    public void deleteUser(@PathVariable("idUser") String idUser) throws ObjectNotFoundException {
         serviceUsuario.deleteUser(idUser);
     }
 }

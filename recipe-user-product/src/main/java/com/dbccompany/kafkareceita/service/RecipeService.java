@@ -11,7 +11,6 @@ import com.dbccompany.kafkareceita.exceptions.UserNotActiveException;
 import com.dbccompany.kafkareceita.repository.RecipeRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +20,6 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @RequiredArgsConstructor
-@Log
 public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final ObjectMapper objectMapper;
