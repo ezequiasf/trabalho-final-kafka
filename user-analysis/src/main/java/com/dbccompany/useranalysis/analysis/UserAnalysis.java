@@ -1,17 +1,17 @@
-package com.dbccompany.processamentocartao.verification;
+package com.dbccompany.useranalysis.analysis;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BuyVerification {
+public class UserAnalysis {
 
     @KafkaListener(
             topics = "${kafka.topic}",
-            groupId = "verify",
+            groupId = "analysis",
             containerFactory = "listenerContainerFactory")
-    public void verifyPayment (@Payload String msg){
+    public void analysis (@Payload String msg){
         System.out.println(msg);
     }
 }
