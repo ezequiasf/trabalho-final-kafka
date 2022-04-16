@@ -8,12 +8,13 @@ import java.util.HashMap;
 
 public class TemplateCompra extends TemplateObject {
 
-    public TemplateCompra (InfoBuyDTO infoBuy){
+    public TemplateCompra(InfoBuyDTO infoBuy) {
         HashMap<String, Object> dadosCompra = new HashMap<>();
-        double total = infoBuy.getQntItens()* infoBuy.getPrice() + 15;
+        double total = infoBuy.getQntItens() * infoBuy.getPrice() + 15;
         dadosCompra.put("productName", infoBuy.getProductName());
         dadosCompra.put("username", infoBuy.getUsername());
-        dadosCompra.put("qntItems", infoBuy.getQntItens());
+        dadosCompra.put("price", infoBuy.getPrice());
+        dadosCompra.put("qntItens", infoBuy.getQntItens());
         dadosCompra.put("total", total);
         setDADOS(dadosCompra);
     }
