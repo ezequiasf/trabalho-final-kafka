@@ -18,10 +18,10 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 public class UserService {
+    private final static LogDTO logInfo = new LogDTO();
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
     private final ProducerService producerService;
-    private final static LogDTO logInfo = new LogDTO();
 
     public List<UserFormedDTO> readAllUsers() throws JsonProcessingException {
         producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Encontrar usuários cadastrados."

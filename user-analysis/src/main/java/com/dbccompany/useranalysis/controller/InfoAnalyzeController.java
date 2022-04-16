@@ -1,7 +1,6 @@
 package com.dbccompany.useranalysis.controller;
 
 import com.dbccompany.useranalysis.service.InfoAnalyzeService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -20,8 +19,8 @@ public class InfoAnalyzeController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Os usuários foram listadas com sucesso."),
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema."),})
-    @GetMapping("/readAgr")
-    public void groupByProductNameAndSoldNumber() throws JsonProcessingException {
+    @GetMapping("/productAndSoldNumber")
+    public void groupByProductNameAndSoldNumber() {
         infoAnalyzeService.groupByProductNameAndSoldNumber();
     }
 
@@ -29,8 +28,8 @@ public class InfoAnalyzeController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Os usuários foram listadas com sucesso."),
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema."),})
-    @GetMapping("/readAgr")
-    public void  groupBySoldDay() throws JsonProcessingException {
+    @GetMapping("/soldDay")
+    public void groupBySoldDay() {
         infoAnalyzeService.groupBySoldDay();
     }
 
@@ -38,8 +37,8 @@ public class InfoAnalyzeController {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Os usuários foram listadas com sucesso."),
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso"),
             @ApiResponse(code = 500, message = "Foi gerada uma exceção no sistema."),})
-    @GetMapping("/readAgr")
-    public void  groupByTotalAmount() throws JsonProcessingException {
+    @GetMapping("/totalAmount")
+    public void groupByTotalAmount() {
         infoAnalyzeService.groupByTotalAmount();
     }
 }

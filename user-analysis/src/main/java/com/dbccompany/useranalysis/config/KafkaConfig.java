@@ -14,11 +14,9 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
+    private static final String LATEST = "latest";
     @Value(value = "${kafka.bootstrap-servers}")
     private String bootstrapAddress;
-
-    private static final String LATEST = "latest";
-
     @Value("${kafka.client-id}")
     private String clientId;
 

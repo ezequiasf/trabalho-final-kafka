@@ -20,12 +20,11 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 public class RecipeService {
+    private final static LogDTO logInfo = new LogDTO();
     private final RecipeRepository recipeRepository;
     private final ObjectMapper objectMapper;
     private final UserService userService;
     private final ProducerService producerService;
-    private final static LogDTO logInfo = new LogDTO();
-
 
     public List<RecipeFormedDTO> readAllRecipes() throws JsonProcessingException {
         producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Encontrar receitas cadastradas."

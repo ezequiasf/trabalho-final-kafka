@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.TextStyle;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -31,29 +30,29 @@ public class InfoAnalyzeService {
     public void saveInfoAnalyze(@Payload String msg) throws JsonProcessingException {
         InfoBuyDTO infoBuy = objectMapper.readValue(msg, InfoBuyDTO.class);
         InfoAnalyzeEntity infoEntity = InfoAnalyzeEntity.builder()
-                    .productName(infoBuy.getProductName())
-                    .soldNumber(infoBuy.getQntItens())
-                    .totalAmount(infoBuy.getQntItens() * infoBuy.getPrice())
-                    .soldDay(LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("pt", "br")))
-                    .build();
+                .productName(infoBuy.getProductName())
+                .soldNumber(infoBuy.getQntItens())
+                .totalAmount(infoBuy.getQntItens() * infoBuy.getPrice())
+                .soldDay(LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("pt", "br")))
+                .build();
         infoAnalyzeRepository.save(infoEntity);
     }
 
-    public List<InfoExpose> groupByProductNameAndSoldNumber (){
+    public List<InfoExpose> groupByProductNameAndSoldNumber() {
         return infoAnalyzeRepository.groupByProductNameAndSoldNumber().stream()
-                .map(inf-> objectMapper.convertValue(inf, InfoExpose.class))
+                .map(inf -> objectMapper.convertValue(inf, InfoExpose.class))
                 .collect(Collectors.toList());
     }
 
-    public List<InfoExpose> groupBySoldDay (){
+    public List<InfoExpose> groupBySoldDay() {
         return infoAnalyzeRepository.groupBySoldDay().stream()
-                .map(inf-> objectMapper.convertValue(inf, InfoExpose.class))
+                .map(inf -> objectMapper.convertValue(inf, InfoExpose.class))
                 .collect(Collectors.toList());
     }
 
-    public List<InfoExpose> groupByTotalAmount (){
+    public List<InfoExpose> groupByTotalAmount() {
         return infoAnalyzeRepository.groupByTotalAmount().stream()
-                .map(inf-> objectMapper.convertValue(inf, InfoExpose.class))
+                .map(inf -> objectMapper.convertValue(inf, InfoExpose.class))
                 .collect(Collectors.toList());
     }
 

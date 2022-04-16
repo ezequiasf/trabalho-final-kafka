@@ -14,8 +14,8 @@ public class LogDTO {
     private TypeLog type;
     private LocalDateTime operationDate;
 
-    public LogDTO constroiLog(String text, TypeLog type){
-       return LogDTO.builder().text(text)
+    public LogDTO constroiLog(String text, TypeLog type) {
+        return LogDTO.builder().text(text)
                 .type(type)
                 .operationDate(LocalDateTime.now())
                 .build();
