@@ -1,6 +1,6 @@
 package com.dbccompany.processamentocartao.verification;
 
-import com.dbccompany.processamentocartao.dto.BuyDTO;
+import com.dbccompany.processamentocartao.dto.InfoBuyDTO;
 import com.dbccompany.processamentocartao.enumTemplates.SituacoesCompra;
 import com.dbccompany.processamentocartao.templateObjects.TemplateCompra;
 import com.dbccompany.processamentocartao.utils.EmailUtil;
@@ -51,17 +51,17 @@ public class BuyVerification {
             groupId = "verify",
             containerFactory = "listenerContainerFactory")
     public void verifyPayment(@Payload String msg) throws JsonProcessingException {
-        BuyDTO buy = objectMapper.readValue(msg, BuyDTO.class);
-        System.out.println(msg);
+        InfoBuyDTO buy = objectMapper.readValue(msg, InfoBuyDTO.class);
+
         if (checkValidation(buy.getCardNumber())) {
             emailUtil.enviarEmailTemplate(TemplateCompra.EMAIL_EMPRESA
-                    , buy.getUserEmail(), "Compra"
-                    , new TemplateCompra()
+                    , buy.getEmail(), "Compra"
+                    , new TemplateCompra(buy)
                     , SituacoesCompra.SUCESSO);
         } else {
             emailUtil.enviarEmailTemplate(TemplateCompra.EMAIL_EMPRESA
-                    , buy.getUserEmail(), "Compra"
-                    , new TemplateCompra()
+                    , buy.getEmail(), "Compra"
+                    , new TemplateCompra(buy)
                     , SituacoesCompra.FALHA);
         }
     }

@@ -73,7 +73,7 @@
                                                             <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0px"><img src="https://wbkrpu.stripocdn.email/content/guids/CABINET_d0083983c1a429c1d9272e38a5b350a3/images/1401618430238266.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="100"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:20px"><h1 style="Margin:0;line-height:46px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:46px;font-style:normal;font-weight:bold;color:#333333">Payment failed</h1></td>
+                                                            <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:20px"><h1 style="Margin:0;line-height:46px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:46px;font-style:normal;font-weight:bold;color:#333333">Payment failed, ${username} :(</h1></td>
                                                         </tr>
                                                     </table></td>
                                             </tr>
