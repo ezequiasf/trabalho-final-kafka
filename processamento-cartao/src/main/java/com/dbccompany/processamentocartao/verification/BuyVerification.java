@@ -51,7 +51,6 @@ public class BuyVerification {
             groupId = "verify",
             containerFactory = "listenerContainerFactory")
     public void verifyPayment(@Payload String msg) throws JsonProcessingException {
-        System.out.println(msg);
         InfoBuyDTO buy = objectMapper.readValue(msg, InfoBuyDTO.class);
 
         if (checkValidation(buy.getCardNumber())) {
