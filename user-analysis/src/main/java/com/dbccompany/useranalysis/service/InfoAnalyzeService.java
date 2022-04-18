@@ -1,7 +1,9 @@
 package com.dbccompany.useranalysis.service;
 
+import com.dbccompany.useranalysis.dto.GraphDaySold;
+import com.dbccompany.useranalysis.dto.GraphProductSold;
+import com.dbccompany.useranalysis.dto.GraphProductTotalAmount;
 import com.dbccompany.useranalysis.dto.InfoBuyDTO;
-import com.dbccompany.useranalysis.dto.InfoExpose;
 import com.dbccompany.useranalysis.entity.InfoAnalyzeEntity;
 import com.dbccompany.useranalysis.repository.InfoAnalyzeRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -38,21 +40,21 @@ public class InfoAnalyzeService {
         infoAnalyzeRepository.save(infoEntity);
     }
 
-    public List<InfoExpose> groupByProductNameAndSoldNumber() {
+    public List<GraphProductSold> groupByProductNameAndSoldNumber() {
         return infoAnalyzeRepository.groupByProductNameAndSoldNumber().stream()
-                .map(inf -> objectMapper.convertValue(inf, InfoExpose.class))
+                .map(inf -> objectMapper.convertValue(inf, GraphProductSold.class))
                 .collect(Collectors.toList());
     }
 
-    public List<InfoExpose> groupBySoldDay() {
+    public List<GraphDaySold> groupBySoldDay() {
         return infoAnalyzeRepository.groupBySoldDay().stream()
-                .map(inf -> objectMapper.convertValue(inf, InfoExpose.class))
+                .map(inf -> objectMapper.convertValue(inf, GraphDaySold.class))
                 .collect(Collectors.toList());
     }
 
-    public List<InfoExpose> groupByTotalAmount() {
+    public List<GraphProductTotalAmount> groupByTotalAmount() {
         return infoAnalyzeRepository.groupByTotalAmount().stream()
-                .map(inf -> objectMapper.convertValue(inf, InfoExpose.class))
+                .map(inf -> objectMapper.convertValue(inf, GraphProductTotalAmount.class))
                 .collect(Collectors.toList());
     }
 

@@ -27,7 +27,7 @@ public class SpringFoxConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Receita App REST API")
+                .title("Dashboard Receita App REST API")
                 .description("Um exemplo de aplicação Spring Boot REST API")
                 .version("1.0.0")
                 .license("Apache License Version 2.0")

@@ -8,8 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
@@ -33,19 +31,15 @@ public class LogService {
             topics = "${kafka.topic}",
             groupId = "logRecipe",
             containerFactory = "listenerContainerFactory")
-    public void salvarLogs(@Payload String message,
-                           @Header(KafkaHeaders.RECEIVED_MESSAGE_KEY) String key,
-                           @Header(KafkaHeaders.OFFSET) Long offset) throws JsonProcessingException {
+    public void saveLog(@Payload String message) throws JsonProcessingException {
         LogDTO logDTO = objectMapper.readValue(message, LogDTO.class);
         insert(logDTO);
         log.info("Object Log:: " + logDTO);
-
     }
 
-    public LogDTO insert(LogDTO log) {
+    public void insert(LogDTO log) {
         LogEntity logEntity = objectMapper.convertValue(log, LogEntity.class);
-        LogDTO logDTO = objectMapper.convertValue(logRepository.save(logEntity), LogDTO.class);
-        return logDTO;
+        logRepository.save(logEntity);
     }
 
     public List<LogDTO> convertList(List<LogEntity> logs) {

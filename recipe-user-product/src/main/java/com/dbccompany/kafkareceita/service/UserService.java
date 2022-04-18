@@ -32,8 +32,6 @@ public class UserService {
     public UserFormedDTO findUserById(String objectId) throws ObjectNotFoundException, JsonProcessingException {
         producerService.sendMessage(logInfo.constroiLog("Chamada de método service:: Encontrar por id."
                 , TypeLog.INFO));
-        //TODO: Metodo envio kafka (topico-log)  sendMessage (msg) #feito
-        //TODO:Log api --Listar, salvar
         UserEntity u = userRepository.findById(objectId).orElseThrow(() ->
                 new ObjectNotFoundException("User not found!"));
         log.info("Feita verificação do ID.");

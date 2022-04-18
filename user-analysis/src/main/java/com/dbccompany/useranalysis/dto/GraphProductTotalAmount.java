@@ -7,10 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
-public class InfoExpose {
+public class GraphProductTotalAmount {
     private String productName;
-    private Integer soldNumber;
-    private String soldDay;
     private double totalAmount;
 }
